@@ -26,19 +26,19 @@ from gpiozero import MCP3008, DigitalOutputDevice
 # ----------------------------- HARDWARE -------------------------------
 ADC_CHANNEL = 0          # MCP3008 CH0
 VREF        = 3.3        # volts on MCP3008 VDD/VREF (the Pi's 3V3 rail)
-R1          = 100_000    # divider TOP resistor   (battery+ -> node), ohms
+R1          = 133_000    # divider TOP resistor   (battery+ -> node), ohms
 R2          = 33_000     # divider BOTTOM resistor (node -> GND), ohms
 CAL         = 1.000      # calibration: (multimeter volts) / (printed volts)
 
-PUMP_PIN    = 17         # GPIO17 -> HW-517 TRIG
+PUMP_PIN    = 24         # GPIO17 -> HW-517 TRIG
 
 DIVIDER = R2 / (R1 + R2)        # node voltage = battery * DIVIDER
 
 # ----------------------------- LVD LOGIC ------------------------------
-V_OFF        = 1.3      # disconnect (pump OFF) when voltage drops below this
-V_ON         = 1.5      # reconnect (pump ON) when voltage rises above this
+V_OFF        = 11.8      # disconnect (pump OFF) when voltage drops below this
+V_ON         = 13.2      # reconnect (pump ON) when voltage rises above this
 DEBOUNCE_S   = 5.0       # a threshold crossing must persist this long to act
-SAMPLE_PERIOD_S = 0.1    # seconds between reads / prints
+SAMPLE_PERIOD_S = 2      # seconds between reads / prints
 N_AVG        = 16        # ADC samples averaged per reading (noise smoothing)
 
 # ----------------------------- SETUP ----------------------------------
