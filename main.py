@@ -51,7 +51,6 @@ def read_voltage():
     """Return the battery voltage in volts (averaged)."""
     raw = sum(adc.value for _ in range(N_AVG)) / N_AVG   # 0.0 .. 1.0
     node_v = raw * VREF
-    return node_v                                  # volts at CH0
     return node_v / DIVIDER * CAL                        # volts at battery
 
 
